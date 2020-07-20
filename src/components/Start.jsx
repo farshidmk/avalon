@@ -61,6 +61,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ROYAL_SERVANT = { name: "loyal servant", isBad: false };
+const CHARACTERS = [
+  ROYAL_SERVANT,
+  { name: "Merlin", isBad: false },
+  { name: "Percival", isBad: false },
+  { name: "Morgana", isBad: true },
+  { name: "Assassin", isBad: true },
+  ROYAL_SERVANT,
+  { name: "Mordred", isBad: true },
+  ROYAL_SERVANT,
+  ROYAL_SERVANT,
+  { name: "Oberon", isBad: true },
+];
+
 const Start = (props) => {
   const classes = useStyles();
   const [playersNo, setPlayersNo] = useState(5);
@@ -128,7 +142,13 @@ const Start = (props) => {
       <div className={classes.charactersSection}>
         <ShowCharacters playersNo={playersNo} />
       </div>
-      <Button onClick={props.onStart} variant="contained" color="primary">
+      <Button
+        onClick={() =>
+          props.onStart(playersName, CHARACTERS.slice(0, playersNo))
+        }
+        variant="contained"
+        color="primary"
+      >
         Start
       </Button>
     </div>
@@ -138,21 +158,6 @@ const Start = (props) => {
 export default Start;
 
 const ShowCharacters = (props) => {
-  const classes = useStyles();
-  const ROYAL_SERVANT = { name: "loyal servant", isBad: false };
-  const CHARACTERS = [
-    ROYAL_SERVANT,
-    { name: "Merlin", isBad: false },
-    { name: "Percival", isBad: false },
-    { name: "Morgana", isBad: true },
-    { name: "Assassin", isBad: true },
-    ROYAL_SERVANT,
-    { name: "Mordred", isBad: true },
-    ROYAL_SERVANT,
-    ROYAL_SERVANT,
-    { name: "Oberon", isBad: true },
-  ];
-
   return (
     <>
       {CHARACTERS.slice(0, props.playersNo).map((ch, index) => (
