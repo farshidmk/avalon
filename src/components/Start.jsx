@@ -122,23 +122,25 @@ const Start = (props) => {
           })}
         </Select>
       </FormControl>
-      <div className={classes.playersName}>
-        {[...Array(playersNo).keys()].map((pn, index) => {
-          return (
-            <TextField
-              className={classes.textField}
-              key={pn}
-              id={`player${pn + 1}-name`}
-              label={`player ${pn + 1}`}
-              variant="outlined"
-              value={playersName[index]}
-              onChange={(e) => {
-                handlePlayersNameChange(e.target.value, index);
-              }}
-            />
-          );
-        })}
-      </div>
+      {playersName.length > 0 ? (
+        <div className={classes.playersName}>
+          {[...Array(playersNo).keys()].map((pn, index) => {
+            return (
+              <TextField
+                className={classes.textField}
+                key={pn}
+                id={`player${pn + 1}-name`}
+                label={`player ${pn + 1}`}
+                variant="outlined"
+                value={playersName[index]}
+                onChange={(e) => {
+                  handlePlayersNameChange(e.target.value, index);
+                }}
+              />
+            );
+          })}
+        </div>
+      ) : null}
       <div className={classes.charactersSection}>
         <ShowCharacters playersNo={playersNo} />
       </div>
