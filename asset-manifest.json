@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/avalon/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/avalon/static/js/main.ec6efa10.chunk.js",
-    "main.js.map": "/avalon/static/js/main.ec6efa10.chunk.js.map",
+    "main.js": "/avalon/static/js/main.772094eb.chunk.js",
+    "main.js.map": "/avalon/static/js/main.772094eb.chunk.js.map",
     "runtime-main.js": "/avalon/static/js/runtime-main.c936b9bf.js",
     "runtime-main.js.map": "/avalon/static/js/runtime-main.c936b9bf.js.map",
     "static/js/2.dc10abb9.chunk.js": "/avalon/static/js/2.dc10abb9.chunk.js",
     "static/js/2.dc10abb9.chunk.js.map": "/avalon/static/js/2.dc10abb9.chunk.js.map",
     "index.html": "/avalon/index.html",
-    "precache-manifest.7042cc992c6469253327e6368d66bb6d.js": "/avalon/precache-manifest.7042cc992c6469253327e6368d66bb6d.js",
+    "precache-manifest.f608b65e6f155b450bf855f87509416b.js": "/avalon/precache-manifest.f608b65e6f155b450bf855f87509416b.js",
     "service-worker.js": "/avalon/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/avalon/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.dc10abb9.chunk.js.LICENSE.txt": "/avalon/static/js/2.dc10abb9.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.c936b9bf.js",
     "static/js/2.dc10abb9.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.ec6efa10.chunk.js"
+    "static/js/main.772094eb.chunk.js"
   ]
 }
