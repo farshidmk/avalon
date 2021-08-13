@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "150px",
     padding: "10px",
     borderRadius: "5px 5px 5px 5px",
-    
+
   },
 }));
 
@@ -127,7 +127,7 @@ const CardToShowPlayers = (props) => {
       <Button
         variant="contained"
         color="primary"
-        onDoubleClick={() => setShowRole((i) => !i)}
+        onClick={() => setShowRole((i) => !i)}
       >
         {showRole ? " hide " : " show "}
       </Button>
