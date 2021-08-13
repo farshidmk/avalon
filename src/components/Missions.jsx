@@ -83,9 +83,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Missions = (props) => {
+const Missions = ({playersWithRole, onRestartWithSamePlayers, onNewGame}) => {
   const classes = useStyles();
-  const { playersWithRole } = props;
   const PLAYERS_NO = playersWithRole.length;
   const PLAYERS_ORDER_IN_MISSION = [
     [2, 3, 2, 3, 3],
@@ -96,6 +95,7 @@ const Missions = (props) => {
     [3, 4, 4, 5, 5],
   ];
   const [openChoosePlayers, setOpenChoosePlayers] = useState(false);
+  const [isShowPlayersRole, setIsShowPlayersRole] = useState(false);
   const [missions, setMissions] = useState(() => {
     let tempRoadMap = PLAYERS_ORDER_IN_MISSION[PLAYERS_NO - 5];
     let tempMission = [];
@@ -145,10 +145,22 @@ const Missions = (props) => {
       }
     }
   }
+  if (isShowPlayersRole) {
+    return <div className="show-all-players-root">
+      <h3>players:</h3>
+      {playersWithRole?.map(player => {
+        return <p className={player.role.isBad ? "show-bad-player-role" : "show-good-player-role"} key={player.name}>{player.name} is {player.role.name}</p>
+      })}
+      <Button variant="outlined" color="primary" onClick={onRestartWithSamePlayers}>Restart With same players</Button>
+      <Button variant="outlined" color="primary" onClick={onNewGame}>start New Game</Button>
+    </div>
+  }
   if (winner) {
     return (
       <div>
         <h1>Winner is {winner} guys</h1>
+        <Button onClick={()=> setIsShowPlayersRole(true)} color="secondary"
+        variant="outlined">Show player's role</Button>
       </div>
     );
   }
@@ -321,7 +333,7 @@ const ChoosePlayers = (props) => {
 };
 
 const PlayerInMission = ({ playersInMission, onMissionCompleted }) => {
-  const classes = useStyles();
+  
   const [missionFailed, setMissionFailed] = useState(false);
   const [indexCounter, setIndexCounter] = useState(0);
 
@@ -336,11 +348,11 @@ const PlayerInMission = ({ playersInMission, onMissionCompleted }) => {
   }
 
   return (
-    <div>
-      {
-        <div>
+    <div className="show-mission-choice">
+      
           <h2>{playersInMission[indexCounter].name}</h2>
           <Button
+          className="show-mission-choice-btn"
             variant="contained"
             color="primary"
             onClick={() => handleClickVote("success")}
@@ -348,14 +360,13 @@ const PlayerInMission = ({ playersInMission, onMissionCompleted }) => {
             Success
           </Button>
           <Button
+          className="show-mission-choice-btn"
             variant="contained"
             color="secondary"
             onClick={() => handleClickVote("failed")}
           >
             fail
           </Button>
-        </div>
-      }
     </div>
   );
 };

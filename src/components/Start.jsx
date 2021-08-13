@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     padding: "5px",
     maxWidth: "800px",
-    // maxHeight: "400px",
     backgroundColor: "antiquewhite",
     display: "flex",
     flexDirection: "column",
@@ -77,12 +76,12 @@ const CHARACTERS = [
 
 const Start = (props) => {
   const classes = useStyles();
-  const [playersNo, setPlayersNo] = useState(5);
+  const [numberOfPlayers, setNumberOfPlayers] = useState(5);
   const [playersName, setPlayersName] = useState([]);
 
   function handlePlayersNameChange(name, index) {
     let newArr = [];
-    for (let i = 0; i < playersNo; i++) {
+    for (let i = 0; i < numberOfPlayers; i++) {
       if (i === index) {
         newArr[i] = name;
       } else {
@@ -94,11 +93,11 @@ const Start = (props) => {
 
   useEffect(() => {
     let newArr = [];
-    for (let i = 0; i < playersNo; i++) {
+    for (let i = 0; i < numberOfPlayers; i++) {
       newArr[i] = `player ${i + 1}`;
     }
     setPlayersName(newArr);
-  }, [playersNo]);
+  }, [numberOfPlayers]);
 
   return (
     <div className={classes.startSection}>
@@ -110,8 +109,8 @@ const Start = (props) => {
         <Select
           labelId="player-number"
           id="player-number-select"
-          value={playersNo}
-          onChange={(e) => setPlayersNo(e.target.value)}
+          value={numberOfPlayers}
+          onChange={(e) => setNumberOfPlayers(e.target.value)}
         >
           {[5, 6, 7, 8, 9, 10].map((number) => {
             return (
@@ -124,13 +123,13 @@ const Start = (props) => {
       </FormControl>
       {playersName.length > 0 ? (
         <div className={classes.playersName}>
-          {[...Array(playersNo).keys()].map((pn, index) => {
+          {[...Array(numberOfPlayers).keys()].map((playerNumber, index) => {
             return (
               <TextField
                 className={classes.textField}
-                key={pn}
-                id={`player${pn + 1}-name`}
-                label={`player ${pn + 1}`}
+                key={playerNumber}
+                id={`player${playerNumber + 1}-name`}
+                label={`player ${playerNumber + 1}`}
                 variant="outlined"
                 value={playersName[index]}
                 onChange={(e) => {
@@ -142,11 +141,11 @@ const Start = (props) => {
         </div>
       ) : null}
       <div className={classes.charactersSection}>
-        <ShowCharacters playersNo={playersNo} />
+        <ShowCharacters numberOfPlayers={numberOfPlayers} />
       </div>
       <Button
         onClick={() =>
-          props.onStart(playersName, CHARACTERS.slice(0, playersNo))
+          props.onStart(playersName, CHARACTERS.slice(0, numberOfPlayers))
         }
         variant="contained"
         color="primary"
@@ -159,10 +158,10 @@ const Start = (props) => {
 
 export default Start;
 
-const ShowCharacters = (props) => {
+const ShowCharacters = ({numberOfPlayers}) => {
   return (
     <>
-      {CHARACTERS.slice(0, props.playersNo).map((ch, index) => (
+      {CHARACTERS.slice(0, numberOfPlayers).map((ch, index) => (
         <Character key={index} name={ch.name} isBad={ch.isBad} />
       ))}
     </>

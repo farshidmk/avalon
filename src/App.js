@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Start from "./components/Start";
 import ShowCharactersToPlayers from "./components/ShowCharactersToPlayers";
 import Missions from "./components/Missions";
+import "./App.css"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +39,17 @@ const App = () => {
           onPlayersGetRole={(pr) => setPlayersWithRole(pr)}
         />
       ) : step === 2 ? (
-        <Missions playersWithRole={playersWithRole} />
+        <Missions playersWithRole={playersWithRole} 
+        onNewGame={()=>{
+          setStep(0);
+          setPlayers([]);
+          setCharacters([]);
+          setPlayersWithRole([]);
+        }}
+        onRestartWithSamePlayers={()=> {
+          setStep(1);
+          setPlayersWithRole([]);
+        }}/>
       ) : null}
     </div>
   );

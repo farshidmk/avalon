@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     textAlign: "center",
     background:
-      "radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(0,0,0,1) 87%)",
+      "radial-gradient(circle, rgb(255 143 143) 0%, rgba(0,0,0,1) 105%)",
   },
   goodCharacter: {
     minWidth: "100px",
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     textAlign: "center",
     background:
-      "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,32,247,1) 87%)",
+      "radial-gradient(circle, rgba(255,255,255,1) 0%, #b6c0ff 87%)",
   },
   playerCardRoot: {
     width: "500px",
@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "150px",
     padding: "10px",
     borderRadius: "5px 5px 5px 5px",
+    
   },
 }));
 
@@ -90,6 +91,12 @@ const ShowCharactersToPlayers = (props) => {
       {playersRole.length ? (
         <CardToShowPlayers
           player={playersRole[playerIndex]}
+          prevPlayer={()=>{
+            if(playerIndex > 0){
+              console.log("in prev:")
+              setPlayerIndex(i => i - 1)
+            }
+          }}
           nextPlayer={() => {
             if (playerIndex >= playersRole.length - 1) {
               props.onGameStart();
@@ -158,7 +165,7 @@ const CardToShowPlayers = (props) => {
                 شوند
               </p>
               {props.player.knowingPlayers.map((player, index) => (
-                <h5 key={index} style={{ color: "white" }}>
+                <h5 key={index} style={{ color: "red" }}>
                   {player}
                 </h5>
               ))}
@@ -181,6 +188,16 @@ const CardToShowPlayers = (props) => {
         disabled={showRole}
       >
         Next player
+      </Button>
+      <Button
+        onClick={() => {
+          props.prevPlayer();
+        }}
+        style={{ margin: "5px", marginTop: "15px" }}
+        fullWidth
+        variant="contained"
+      >
+        prev player
       </Button>
     </div>
   );
