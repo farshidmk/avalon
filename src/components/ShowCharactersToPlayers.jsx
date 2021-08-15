@@ -3,6 +3,12 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Collapse from "@material-ui/core/Collapse";
+import assassinIcon from "../assets/assassin.png";
+import loyalServantIcon from "../assets/loyalServant.png";
+import merlinIcon from "../assets/merlin.png";
+import morganaIcon from "../assets/morgana.png";
+import percivalIcon from "../assets/percival.png";
+import devilIcon from "../assets/devil.png";
 
 const useStyles = makeStyles((theme) => ({
   badCharacter: {
@@ -22,8 +28,7 @@ const useStyles = makeStyles((theme) => ({
     border: "3px solid white",
     color: "black",
     textAlign: "center",
-    background:
-      "radial-gradient(circle, rgba(255,255,255,1) 0%, #b6c0ff 87%)",
+    background: "radial-gradient(circle, rgba(255,255,255,1) 0%, #b6c0ff 87%)",
   },
   playerCardRoot: {
     width: "500px",
@@ -34,14 +39,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     border: "3px solid black",
     borderRadius: "15px 15px 15px 15px",
-    backgroundColor: "#5b5b5b",
   },
   characterSection: {
     minWidth: "300px",
     minHeight: "150px",
     padding: "10px",
     borderRadius: "5px 5px 5px 5px",
-
   },
 }));
 
@@ -91,12 +94,9 @@ const ShowCharactersToPlayers = (props) => {
       {playersRole.length ? (
         <CardToShowPlayers
           player={playersRole[playerIndex]}
-          prevPlayer={()=>{
-            if(playerIndex > 0){
-              console.log("in prev:")
-              setPlayerIndex(i => i - 1)
-            }
-          }}
+          prevPlayer={
+            playerIndex > 0 ? () => setPlayerIndex((i) => i - 1) : false
+          }
           nextPlayer={() => {
             if (playerIndex >= playersRole.length - 1) {
               props.onGameStart();
@@ -114,16 +114,35 @@ const ShowCharactersToPlayers = (props) => {
 
 export default ShowCharactersToPlayers;
 
-const CardToShowPlayers = (props) => {
+const CardToShowPlayers = ({ player, nextPlayer, prevPlayer }) => {
   const classes = useStyles();
   const [showRole, setShowRole] = useState(false);
+  let srcImg;
+  switch (player.role.name) {
+    case "Merlin":
+      srcImg = merlinIcon;
+      break;
+    case "Percival":
+      srcImg = percivalIcon;
+      break;
+    case "Morgana":
+      srcImg = morganaIcon;
+      break;
+    case "Assassin":
+      srcImg = assassinIcon;
+      break;
+    case "loyal servant":
+      srcImg = loyalServantIcon;
+      break;
+    default:
+      srcImg = devilIcon;
+      break;
+  }
   return (
     <div className={classes.playerCardRoot}>
-      <h3>{props.player.name}</h3>
-      <p>
-        double click on button to {showRole ? " hide " : " show "} your
-        character
-      </p>
+      <h3>{player.name}</h3>
+      <p>click on button to {showRole ? " hide " : " show "} your character</p>
+
       <Button
         variant="contained"
         color="primary"
@@ -134,37 +153,44 @@ const CardToShowPlayers = (props) => {
       <Collapse in={showRole}>
         <div
           className={clsx(classes.characterSection, {
-            [classes.badCharacter]: props.player.role.isBad,
-            [classes.goodCharacter]: !props.player.role.isBad,
+            [classes.badCharacter]: player.role.isBad,
+            [classes.goodCharacter]: !player.role.isBad,
           })}
         >
-          <h3>{props.player.role.name}</h3>
-          {props.player.role.isBad ? (
+          <div className="header-show-character">
+            <img
+              className="character-in-start"
+              alt={`${player.role.name}-icon`}
+              src={srcImg}
+            />
+            <h3>{player.role.name}</h3>
+          </div>
+          {player.role.isBad ? (
             <>
               <p>هم تیمی های شما :</p>
-              {props.player.knowingPlayers.map((player, index) => (
+              {player.knowingPlayers.map((player, index) => (
                 <h5 key={index} style={{ color: "black" }}>
                   {player}
                 </h5>
               ))}
             </>
-          ) : props.player.role.name === "Percival" ? (
+          ) : player.role.name === "Percival" ? (
             <>
               <p>
                 یکی از دو بازیکنان زیر مرلین است و دیگری خود را در نقش مرلین جا
                 زده است
               </p>
-              {props.player.merlinsFace.map((merlin, index) => (
+              {player.merlinsFace.map((merlin, index) => (
                 <h5 key={`merlin-face-${index}`}>{merlin}</h5>
               ))}
             </>
-          ) : props.player.role.name === "Merlin" ? (
+          ) : player.role.name === "Merlin" ? (
             <>
               <p>
                 شما تیم شیطان را میشناسید ولی آنها نباید متوجه نقش شما در بازی
                 شوند
               </p>
-              {props.player.knowingPlayers.map((player, index) => (
+              {player.knowingPlayers.map((player, index) => (
                 <h5 key={index} style={{ color: "red" }}>
                   {player}
                 </h5>
@@ -180,7 +206,7 @@ const CardToShowPlayers = (props) => {
       </Collapse>
       <Button
         onClick={() => {
-          props.nextPlayer();
+          nextPlayer();
         }}
         style={{ margin: "5px", marginTop: "15px" }}
         fullWidth
@@ -191,10 +217,10 @@ const CardToShowPlayers = (props) => {
       </Button>
       <Button
         onClick={() => {
-          props.prevPlayer();
+          prevPlayer();
         }}
-        style={{ margin: "5px", marginTop: "15px" }}
-        fullWidth
+        className="prev-player"
+        disabled={!prevPlayer}
         variant="contained"
       >
         prev player

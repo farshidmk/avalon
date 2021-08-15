@@ -60,3 +60,24 @@
   width: auto;
   height: 5vh;
 }
+
+.header-show-character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.header-show-character > h3 {
+  margin: 0px;
+}
+
+.header-show-character > img {
+  height: 70px;
+}
+
+.prev-player {
+  position: absolute !important;
+  bottom: 0px;
+  border: 1px solid black !important;
+  opacity: 0.2;
+}
