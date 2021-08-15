@@ -8,18 +8,24 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import assassinIcon from "../assets/assassin.png";
+import loyalServantIcon from "../assets/loyalServant.png";
+import merlinIcon from "../assets/merlin.png";
+import morganaIcon from "../assets/morgana.png";
+import percivalIcon from "../assets/percival.png";
+import devilIcon from "../assets/devil.png";
 
 const useStyles = makeStyles((theme) => ({
   startSection: {
-    border: "solid red 2px",
+    border: "solid black 2px",
     borderRadius: "5px",
-    width: "100%",
-    height: "100%",
-    padding: "5px",
+    boxShadow: "0px 0px 20px black",
+    padding: theme.spacing(1),
+    margin: theme.spacing(1),
     maxWidth: "800px",
-    backgroundColor: "antiquewhite",
     display: "flex",
     flexDirection: "column",
+    overflow: "auto",
   },
   playersNo: {
     minWidth: "200px",
@@ -101,7 +107,7 @@ const Start = (props) => {
 
   return (
     <div className={classes.startSection}>
-      <Typography variant="h3" align="center">
+      <Typography variant="h3" align="center" className="start-title">
         Avalon
       </Typography>
       <FormControl className={classes.playersNo}>
@@ -144,6 +150,7 @@ const Start = (props) => {
         <ShowCharacters numberOfPlayers={numberOfPlayers} />
       </div>
       <Button
+        className="buttons"
         onClick={() =>
           props.onStart(playersName, CHARACTERS.slice(0, numberOfPlayers))
         }
@@ -158,7 +165,7 @@ const Start = (props) => {
 
 export default Start;
 
-const ShowCharacters = ({numberOfPlayers}) => {
+const ShowCharacters = ({ numberOfPlayers }) => {
   return (
     <>
       {CHARACTERS.slice(0, numberOfPlayers).map((ch, index) => (
@@ -167,17 +174,42 @@ const ShowCharacters = ({numberOfPlayers}) => {
     </>
   );
 };
-const Character = (props) => {
+const Character = ({ name, isBad }) => {
   const classes = useStyles();
+  let srcImg;
+  switch (name) {
+    case "Merlin":
+      srcImg = merlinIcon;
+      break;
+    case "Percival":
+      srcImg = percivalIcon;
+      break;
+    case "Morgana":
+      srcImg = morganaIcon;
+      break;
+    case "Assassin":
+      srcImg = assassinIcon;
+      break;
+    case "loyal servant":
+      srcImg = loyalServantIcon;
+      break;
+    default:
+      srcImg = devilIcon;
+      break;
+  }
 
   return (
     <div
-      className={clsx({
-        [classes.badCharacter]: props.isBad,
-        [classes.goodCharacter]: !props.isBad,
-      })}
+      className={clsx(
+        {
+          [classes.badCharacter]: isBad,
+          [classes.goodCharacter]: !isBad,
+        },
+        "card-character-in-start"
+      )}
     >
-      <h5>{props.name}</h5>
+      <h5>{name}</h5>
+      <img className="character-in-start" alt={`${name}-icon`} src={srcImg} />
     </div>
   );
 };

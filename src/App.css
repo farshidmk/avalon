@@ -9,29 +9,54 @@
   background-color: antiquewhite;
 }
 
-.show-mission-choice{
+.show-mission-choice {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.show-mission-choice > h2{
+.show-mission-choice > h2 {
   margin-top: 16px;
 }
 
-.show-mission-choice > button{
+.show-mission-choice > button {
   margin-top: 8px;
   height: clamp(100px, 24vh, 400px);
   width: clamp(200px, 66vw, 800px);
   font-size: clamp(24px, 14vw, 100px);
 }
 
-.show-bad-player-role{
+.show-bad-player-role {
   color: rgb(255, 0, 0);
   font-size: medium;
 }
 
-.show-good-player-role{
+.show-good-player-role {
   color: rgba(0, 38, 255, 0.582);
   font-size: medium;
   font-weight: bold;
+}
+
+.buttons {
+  min-height: 60px;
+}
+
+.start-title {
+  position: sticky;
+  top: 0px;
+  background: #e2e2e2;
+}
+
+.card-character-in-start > h5 {
+  margin: 0px;
+}
+.card-character-in-start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.character-in-start {
+  margin-top: 3px;
+  width: auto;
+  height: 5vh;
 }
