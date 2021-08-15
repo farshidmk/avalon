@@ -55,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid red",
     color: "black",
     textAlign: "center",
+    boxShadow: "0px 0px 10px red",
+    borderRadius: "10px",
   },
   goodCharacter: {
     minWidth: "100px",
@@ -63,6 +65,8 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid blue",
     color: "white",
     textAlign: "center",
+    boxShadow: "0px 0px 10px #0000ff",
+    borderRadius: "10px",
   },
 }));
 
