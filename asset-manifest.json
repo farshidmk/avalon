@@ -1,22 +1,28 @@
 {
   "files": {
-    "main.css": "/avalon/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/avalon/static/js/main.3991ae0a.chunk.js",
-    "main.js.map": "/avalon/static/js/main.3991ae0a.chunk.js.map",
+    "main.css": "/avalon/static/css/main.5ee1f887.chunk.css",
+    "main.js": "/avalon/static/js/main.b8b199af.chunk.js",
+    "main.js.map": "/avalon/static/js/main.b8b199af.chunk.js.map",
     "runtime-main.js": "/avalon/static/js/runtime-main.c936b9bf.js",
     "runtime-main.js.map": "/avalon/static/js/runtime-main.c936b9bf.js.map",
-    "static/js/2.bb4bf1ba.chunk.js": "/avalon/static/js/2.bb4bf1ba.chunk.js",
-    "static/js/2.bb4bf1ba.chunk.js.map": "/avalon/static/js/2.bb4bf1ba.chunk.js.map",
+    "static/js/2.aea845ba.chunk.js": "/avalon/static/js/2.aea845ba.chunk.js",
+    "static/js/2.aea845ba.chunk.js.map": "/avalon/static/js/2.aea845ba.chunk.js.map",
     "index.html": "/avalon/index.html",
-    "precache-manifest.febf5ff21bf109496bb060de9deeaecd.js": "/avalon/precache-manifest.febf5ff21bf109496bb060de9deeaecd.js",
+    "precache-manifest.9d967b0ac99dc9b9a9ee4c54308e4f0a.js": "/avalon/precache-manifest.9d967b0ac99dc9b9a9ee4c54308e4f0a.js",
     "service-worker.js": "/avalon/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/avalon/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.bb4bf1ba.chunk.js.LICENSE.txt": "/avalon/static/js/2.bb4bf1ba.chunk.js.LICENSE.txt"
+    "static/css/main.5ee1f887.chunk.css.map": "/avalon/static/css/main.5ee1f887.chunk.css.map",
+    "static/js/2.aea845ba.chunk.js.LICENSE.txt": "/avalon/static/js/2.aea845ba.chunk.js.LICENSE.txt",
+    "static/media/assassin.png": "/avalon/static/media/assassin.26f005f7.png",
+    "static/media/devil.png": "/avalon/static/media/devil.1f69d8ac.png",
+    "static/media/loyalServant.png": "/avalon/static/media/loyalServant.2301d6e4.png",
+    "static/media/merlin.png": "/avalon/static/media/merlin.93d86e3d.png",
+    "static/media/morgana.png": "/avalon/static/media/morgana.29c5ab41.png",
+    "static/media/percival.png": "/avalon/static/media/percival.72a9da8e.png"
   },
   "entrypoints": [
     "static/js/runtime-main.c936b9bf.js",
-    "static/js/2.bb4bf1ba.chunk.js",
-    "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.3991ae0a.chunk.js"
+    "static/js/2.aea845ba.chunk.js",
+    "static/css/main.5ee1f887.chunk.css",
+    "static/js/main.b8b199af.chunk.js"
   ]
 }
