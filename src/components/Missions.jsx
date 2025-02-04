@@ -8,23 +8,29 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Collapse from "@material-ui/core/Collapse";
+import chooseSuccess from "../assets/chooseSuccess.png";
+import chooseDefeat from "../assets/chooseDefeat.png";
 
 const useStyles = makeStyles((theme) => ({
   missionsRoot: {
     width: "100vw",
-    height: "100vh",
+    height: "calc(100vh-16px)",
     display: "flex",
     justifyContent: "center",
+    flexDirection: "column",
+    padding: "16px",
   },
   boardRoot: {
-    width: "85%",
-    height: "90%",
+    // width: "85%",
+    // height: "90%",
     backgroundColor: "#grey",
     border: "2px solid black",
     borderRadius: "5px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "column",
+    flex: 1,
   },
   round: {
     borderRadius: "50%",
@@ -74,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonsSection: {
     display: "flex",
+    gap: "8px",
     margin: "5px 2px",
     justifyContent: "space-evenly",
   },
@@ -83,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Missions = ({playersWithRole, onRestartWithSamePlayers, onNewGame}) => {
+const Missions = ({ playersWithRole, onRestartWithSamePlayers, onNewGame }) => {
   const classes = useStyles();
   const PLAYERS_NO = playersWithRole.length;
   const PLAYERS_ORDER_IN_MISSION = [
@@ -113,9 +120,9 @@ const Missions = ({playersWithRole, onRestartWithSamePlayers, onNewGame}) => {
   const [showMission, setShowMission] = useState(false);
   const [winner, setWinner] = useState("");
 
-  function missionCompleted(result) {
+  function missionCompleted(isFailed) {
     let temp = missions;
-    if (!result) {
+    if (!isFailed) {
       temp[currentMission] = {
         players: temp[currentMission].players,
         status: "success",
@@ -146,21 +153,47 @@ const Missions = ({playersWithRole, onRestartWithSamePlayers, onNewGame}) => {
     }
   }
   if (isShowPlayersRole) {
-    return <div className="show-all-players-root">
-      <h3>players:</h3>
-      {playersWithRole?.map(player => {
-        return <p className={player.role.isBad ? "show-bad-player-role" : "show-good-player-role"} key={player.name}>{player.name} is {player.role.name}</p>
-      })}
-      <Button variant="outlined" color="primary" onClick={onRestartWithSamePlayers}>Restart With same players</Button>
-      <Button variant="outlined" color="primary" onClick={onNewGame}>start New Game</Button>
-    </div>
+    return (
+      <div className="show-all-players-root">
+        <h3>players:</h3>
+        {playersWithRole?.map((player) => {
+          return (
+            <p
+              className={
+                player.role.isBad
+                  ? "show-bad-player-role"
+                  : "show-good-player-role"
+              }
+              key={player.name}
+            >
+              {player.name} is {player.role.name}
+            </p>
+          );
+        })}
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={onRestartWithSamePlayers}
+        >
+          Restart With same players
+        </Button>
+        <Button variant="outlined" color="primary" onClick={onNewGame}>
+          start New Game
+        </Button>
+      </div>
+    );
   }
   if (winner) {
     return (
       <div>
         <h1>Winner is {winner} guys</h1>
-        <Button onClick={()=> setIsShowPlayersRole(true)} color="secondary"
-        variant="outlined">Show player's role</Button>
+        <Button
+          onClick={() => setIsShowPlayersRole(true)}
+          color="secondary"
+          variant="outlined"
+        >
+          Show player's role
+        </Button>
       </div>
     );
   }
@@ -333,10 +366,8 @@ const ChoosePlayers = (props) => {
 };
 
 const PlayerInMission = ({ playersInMission, onMissionCompleted }) => {
-  
   const [missionFailed, setMissionFailed] = useState(false);
   const [indexCounter, setIndexCounter] = useState(0);
-
   function handleClickVote(vote) {
     setIndexCounter((i) => i + 1);
     if (vote === "failed") {
@@ -349,24 +380,47 @@ const PlayerInMission = ({ playersInMission, onMissionCompleted }) => {
 
   return (
     <div className="show-mission-choice">
-      
-          <h2>{playersInMission[indexCounter].name}</h2>
-          <Button
-          className="show-mission-choice-btn"
-            variant="contained"
-            color="primary"
+      <h2>{playersInMission[indexCounter].name}</h2>
+      <div>
+        <div>
+          <h4>موفقیت</h4>
+          <img
+            src={chooseSuccess}
+            alt="success"
             onClick={() => handleClickVote("success")}
-          >
-            Success
-          </Button>
-          <Button
-          className="show-mission-choice-btn"
-            variant="contained"
-            color="secondary"
-            onClick={() => handleClickVote("failed")}
-          >
-            fail
-          </Button>
+          />
+        </div>
+        <div>
+          <h4>شکست</h4>
+          <img
+            src={chooseDefeat}
+            alt="defeat"
+            onClick={() => {
+              if (!playersInMission[indexCounter].role.isBad) {
+                window.alert("شما نباید به ماموریت شکست بدهید");
+              } else {
+                handleClickVote("failed");
+              }
+            }}
+          />
+        </div>
+      </div>
+      {/* <Button
+        className="show-mission-choice-btn"
+        variant="contained"
+        color="primary"
+        onClick={() => handleClickVote("success")}
+      >
+        Success
+      </Button>
+      <Button
+        className="show-mission-choice-btn"
+        variant="contained"
+        color="secondary"
+        
+      >
+        fail
+      </Button> */}
     </div>
   );
 };

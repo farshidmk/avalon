@@ -159,7 +159,7 @@ const CardToShowPlayers = ({ player, nextPlayer, prevPlayer }) => {
         >
           <div className="header-show-character">
             <img
-              className="character-in-start"
+              className="character-in-show-card"
               alt={`${player.role.name}-icon`}
               src={srcImg}
             />
@@ -168,6 +168,12 @@ const CardToShowPlayers = ({ player, nextPlayer, prevPlayer }) => {
           {player.role.isBad ? (
             <>
               <p>هم تیمی های شما :</p>
+              {player.role.name === "Morgana" && (
+                <p>
+                  پرسیوال بین شما و مرلین باید به یکی اعتماد کند و او را به چشم
+                  مرلین ببیند. سعی کنید او را متقاعد کنید به شما اعتماد کند.
+                </p>
+              )}
               {player.knowingPlayers.map((player, index) => (
                 <h5 key={index} style={{ color: "black" }}>
                   {player}

@@ -24,6 +24,24 @@
   width: clamp(200px, 66vw, 800px);
   font-size: clamp(24px, 14vw, 100px);
 }
+.show-mission-choice > div {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+.show-mission-choice > div > div {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  align-items: center;
+  padding: 4px;
+  border-radius: 8px;
+}
+.show-mission-choice > div > div > img {
+  width: 150px;
+  height: auto;
+  /* flex: 1; */
+}
 
 .show-bad-player-role {
   color: rgb(255, 0, 0);
@@ -54,11 +72,12 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 4px;
 }
 .character-in-start {
   margin-top: 3px;
-  width: auto;
-  height: 5vh;
+  width: 100px;
+  height: auto;
 }
 
 .header-show-character {
@@ -71,13 +90,14 @@
   margin: 0px;
 }
 
-.header-show-character > img {
-  height: 70px;
-}
-
 .prev-player {
   position: absolute !important;
   bottom: 0px;
   border: 1px solid black !important;
   opacity: 0.2;
+}
+
+.character-in-show-card {
+  width: 200px;
+  height: auto;
 }
