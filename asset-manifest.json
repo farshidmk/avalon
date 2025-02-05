@@ -1,28 +1,30 @@
 {
   "files": {
-    "main.css": "/avalon/static/css/main.5ee1f887.chunk.css",
-    "main.js": "/avalon/static/js/main.b8b199af.chunk.js",
-    "main.js.map": "/avalon/static/js/main.b8b199af.chunk.js.map",
+    "main.css": "/avalon/static/css/main.1df31d09.chunk.css",
+    "main.js": "/avalon/static/js/main.f9f01210.chunk.js",
+    "main.js.map": "/avalon/static/js/main.f9f01210.chunk.js.map",
     "runtime-main.js": "/avalon/static/js/runtime-main.c936b9bf.js",
     "runtime-main.js.map": "/avalon/static/js/runtime-main.c936b9bf.js.map",
-    "static/js/2.aea845ba.chunk.js": "/avalon/static/js/2.aea845ba.chunk.js",
-    "static/js/2.aea845ba.chunk.js.map": "/avalon/static/js/2.aea845ba.chunk.js.map",
+    "static/js/2.cf8a000b.chunk.js": "/avalon/static/js/2.cf8a000b.chunk.js",
+    "static/js/2.cf8a000b.chunk.js.map": "/avalon/static/js/2.cf8a000b.chunk.js.map",
     "index.html": "/avalon/index.html",
-    "precache-manifest.9d967b0ac99dc9b9a9ee4c54308e4f0a.js": "/avalon/precache-manifest.9d967b0ac99dc9b9a9ee4c54308e4f0a.js",
+    "precache-manifest.63ee1c0e0cc66ca424649e00608e1964.js": "/avalon/precache-manifest.63ee1c0e0cc66ca424649e00608e1964.js",
     "service-worker.js": "/avalon/service-worker.js",
-    "static/css/main.5ee1f887.chunk.css.map": "/avalon/static/css/main.5ee1f887.chunk.css.map",
-    "static/js/2.aea845ba.chunk.js.LICENSE.txt": "/avalon/static/js/2.aea845ba.chunk.js.LICENSE.txt",
-    "static/media/assassin.png": "/avalon/static/media/assassin.26f005f7.png",
-    "static/media/devil.png": "/avalon/static/media/devil.1f69d8ac.png",
-    "static/media/loyalServant.png": "/avalon/static/media/loyalServant.2301d6e4.png",
-    "static/media/merlin.png": "/avalon/static/media/merlin.93d86e3d.png",
-    "static/media/morgana.png": "/avalon/static/media/morgana.29c5ab41.png",
-    "static/media/percival.png": "/avalon/static/media/percival.72a9da8e.png"
+    "static/css/main.1df31d09.chunk.css.map": "/avalon/static/css/main.1df31d09.chunk.css.map",
+    "static/js/2.cf8a000b.chunk.js.LICENSE.txt": "/avalon/static/js/2.cf8a000b.chunk.js.LICENSE.txt",
+    "static/media/assassin.png": "/avalon/static/media/assassin.5f668b01.png",
+    "static/media/chooseDefeat.png": "/avalon/static/media/chooseDefeat.9df41631.png",
+    "static/media/chooseSuccess.png": "/avalon/static/media/chooseSuccess.d996d6d8.png",
+    "static/media/devil.png": "/avalon/static/media/devil.df19dc75.png",
+    "static/media/loyalServant.png": "/avalon/static/media/loyalServant.e87d4aaf.png",
+    "static/media/merlin.png": "/avalon/static/media/merlin.7f22cc65.png",
+    "static/media/morgana.png": "/avalon/static/media/morgana.e58f6d8c.png",
+    "static/media/percival.png": "/avalon/static/media/percival.a23f95b6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.c936b9bf.js",
-    "static/js/2.aea845ba.chunk.js",
-    "static/css/main.5ee1f887.chunk.css",
-    "static/js/main.b8b199af.chunk.js"
+    "static/js/2.cf8a000b.chunk.js",
+    "static/css/main.1df31d09.chunk.css",
+    "static/js/main.f9f01210.chunk.js"
   ]
 }
